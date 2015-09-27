@@ -35,12 +35,12 @@ namespace JobTracker.Models
         private bool _TillNow = false;
 
         [XmlAttribute("DatesVisibility")]
-        private DatesVisibility _DatesVisibility = DatesVisibility.Both;
         public DatesVisibility DatesVisibility { get { return _DatesVisibility; } set { Set(ref _DatesVisibility, value); } }
+        private DatesVisibility _DatesVisibility = DatesVisibility.Both;
 
         [XmlAttribute("DatesPartsVisibility")]
-        private TimeUnit _DatesPartsVisibility = TimeUnit.MonthAndYear;
         public TimeUnit DatesPartsVisibility { get { return _DatesPartsVisibility; } set { Set(ref _DatesPartsVisibility, value); } }
+        private TimeUnit _DatesPartsVisibility = TimeUnit.MonthAndYear;
         
         public const string NowFieldName = "Now";
 
