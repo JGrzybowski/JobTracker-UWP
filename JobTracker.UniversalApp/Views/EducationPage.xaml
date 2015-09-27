@@ -8,7 +8,6 @@
     xmlns:vm="using:JobTracker.UniversalApp.ViewModels"
     xmlns:CV="using:JobTracker.Models.CV"
     xmlns:LocalControls="using:JobTracker.UniversalApp.Controls"
-    xmlns:Commands="using:JobTracker.UniversalApp.Mvvm.Commands"
     xmlns:Converters ="using:JobTracker.UniversalApp.Converters"
     
     xmlns:controls="using:Template10.Controls"
@@ -26,6 +25,7 @@
         <Converters:NegateConverter x:Key="NegateConverter" />
         <Converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <Converters:LanguageTagToNativeNameConverter x:Key="ToNativeLanguageName" />
         <DataTemplate x:Key="EducationItemTemplate" x:DataType="CV:EducationItem">
             <StackPanel Orientation="Vertical" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="2">
                 <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="20" />
@@ -45,11 +45,11 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="1" Text="School Name:" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="1" x:Uid="SchoolNameLabel"  Text="School Name:" VerticalAlignment="Center"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind SchoolName, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" Text="Domain" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="2" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
                 <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Domain, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" Text="Description" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="3" x:Uid="DescriptionLabel" Text="Description" VerticalAlignment="Center" />
                 <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
             </Grid>
         </DataTemplate>
@@ -83,9 +83,9 @@
             </ScrollViewer>
         </Grid>
         <CommandBar Grid.Row="1" RelativePanel.Below="ConfirmRemoveItemPanel" x:Name="ItemsCommandBar">
-            <AppBarButton Icon="Sort" IsEnabled="False" Label="Sort"/>
-            <AppBarButton Icon="Filter" IsEnabled="False" Label="Filter"/>
-            <AppBarButton Icon="Delete" IsEnabled="{Binding IsAnyItemSelected}" Click="RemoveItemButton_Click"  Label="Delete Item">
+            <AppBarButton Icon="Sort" IsEnabled="False" Label="Sort" x:Uid="SortButton"/>
+            <AppBarButton Icon="Filter" IsEnabled="False" Label="Filter" x:Uid="FilterButton"/>
+            <AppBarButton Icon="Delete" IsEnabled="{Binding IsAnyItemSelected}" Click="RemoveItemButton_Click" x:Uid="RemoveItemButton" Label="Delete Item">
                 <AppBarButton.Flyout>
                     <Flyout>
                         <Grid>
@@ -104,11 +104,11 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
-            <AppBarButton Icon="Add" Click="AddItemButton_Click" Label="Add Item">
+            <AppBarButton Icon="Add" Click="AddItemButton_Click" x:Uid="AddItemButton">
                 <AppBarButton.Flyout>
                     <Flyout>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="NewItemsTitleTextBox" PlaceholderText="New Item's Name"  Margin="4" />
+                            <TextBox x:Name="NewItemsTitleTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" />
                             <Button x:Name="ConfirmAddItemButtom" Grid.Column="1"  Padding="4" Content="OK" Margin="4" Click="ConfirmAddItemButtom_Click"/>
                         </StackPanel>
                     </Flyout>
@@ -117,12 +117,12 @@
         </CommandBar>
         <StackPanel Grid.Column="1" Visibility="{x:Bind ViewModel.IsAnyItemSelected, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}">
             <CommandBar HorizontalContentAlignment="Right">
-                <AppBarButton Icon="Globe" Label="Add Translation">
+                <AppBarButton Icon="Globe" x:Uid="AddTranslationButton">
                     <AppBarButton.Flyout>
                         <Flyout Placement="Bottom" LocalControls:BindableFlyout.ItemsSource="{Binding AvaliableNewLanguages, Mode=OneWay}" >
                             <LocalControls:BindableFlyout.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <MenuFlyoutItem Text="{Binding}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left"/>
+                                    <MenuFlyoutItem Text="{Binding Converter={StaticResource ToNativeLanguageName}}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left"/>
                                 </DataTemplate>
                             </LocalControls:BindableFlyout.ItemTemplate>
                         </Flyout>

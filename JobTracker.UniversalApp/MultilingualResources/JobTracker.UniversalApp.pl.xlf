@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="pl" original="JOBTRACKER.UNIVERSALAPP/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.1413.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="JOBTRACKER.UNIVERSALAPP/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="SettingsButton.Text" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Ustawienia</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Text next to settings button.</note>
+        </trans-unit>
+        <trans-unit id="AddItemButton.Label" translate="yes" xml:space="preserve">
+          <source>Add Item</source>
+          <target state="needs-review-translation">Dodaj Element</target>
+        </trans-unit>
+        <trans-unit id="FilterButton.Label" translate="yes" xml:space="preserve">
+          <source>Filter</source>
+          <target state="translated">Filtruj</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Verb describing filtering.</note>
+        </trans-unit>
+        <trans-unit id="RemoveItemButton.Label" translate="yes" xml:space="preserve">
+          <source>Remove Item</source>
+          <target state="needs-review-translation">Usuń Element</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Text on the button removing items from CV section</note>
+        </trans-unit>
+        <trans-unit id="SortButton.Label" translate="yes" xml:space="preserve">
+          <source>Sort</source>
+          <target state="translated">Sortuj</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Verb describing sorting</note>
+        </trans-unit>
+        <trans-unit id="AddTranslationButton.Label" translate="yes" xml:space="preserve">
+          <source>Add Translation</source>
+          <target state="translated">Dodaj Tłumaczenie</target>
+        </trans-unit>
+        <trans-unit id="DescriptionLabel.Text" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Opis</target>
+        </trans-unit>
+        <trans-unit id="DomainLabel.Text" translate="yes" xml:space="preserve">
+          <source>Domain</source>
+          <target state="translated">Dziedzina</target>
+        </trans-unit>
+        <trans-unit id="SchoolNameLabel.Text" translate="yes" xml:space="preserve">
+          <source>School Name</source>
+          <target state="translated">Nazwa szkoły</target>
+        </trans-unit>
+        <trans-unit id="ApplicationName" translate="no" xml:space="preserve">
+          <source>JobTracker</source>
+          <target state="new">JobTracker</target>
+        </trans-unit>
+        <trans-unit id="LanguageName" translate="yes" xml:space="preserve">
+          <source>English</source>
+          <target state="translated">Polski
+</target>
+          <note from="MultilingualBuild" annotates="source" priority="2">Native name of the language.</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddItemButton.Label" xml:space="preserve">
+    <value>Ajouter un élément</value>
+  </data>
+  <data name="AddTranslationButton.Label" xml:space="preserve">
+    <value>Ajout de la traduction</value>
+  </data>
+  <data name="DescriptionLabel.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DomainLabel.Text" xml:space="preserve">
+    <value>*Domaine</value>
+  </data>
+  <data name="FilterButton.Label" xml:space="preserve">
+    <value>Filtrer</value>
+    <comment>Verb describing filtering.</comment>
+  </data>
+  <data name="RemoveItemButton.Label" xml:space="preserve">
+    <value>Supprimer l'élément</value>
+    <comment>Text on the button removing items from CV section</comment>
+  </data>
+  <data name="SchoolNameLabel.Text" xml:space="preserve">
+    <value>Nom de l'école</value>
+  </data>
+  <data name="SettingsButton.Text" xml:space="preserve">
+    <value>Paramètres</value>
+    <comment>Text next to settings button.</comment>
+  </data>
+  <data name="SortButton.Label" xml:space="preserve">
+    <value>Trier</value>
+    <comment>Verb describing sorting</comment>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>Francais</value>
+    <comment>Native name of the language.</comment>
+  </data>
+</root>

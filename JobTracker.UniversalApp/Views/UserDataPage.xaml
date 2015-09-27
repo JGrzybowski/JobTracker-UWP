@@ -5,7 +5,6 @@
     xmlns:local="using:JobTracker.UniversalApp.Views"
     xmlns:vm="using:JobTracker.UniversalApp.ViewModels"
     xmlns:CV="using:JobTracker.Models.CV"
-    xmlns:Commands="using:JobTracker.UniversalApp.Mvvm.Commands"
     xmlns:Converters ="using:JobTracker.UniversalApp.Converters"
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

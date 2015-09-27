@@ -1,7 +1,6 @@
 ﻿using JobTracker.Models;
 using JobTracker.Models.CV;
 using JobTracker.UniversalApp.Models;
-using JobTracker.UniversalApp.Mvvm.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

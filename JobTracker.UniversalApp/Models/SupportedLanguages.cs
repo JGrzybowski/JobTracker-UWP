@@ -8,12 +8,12 @@ namespace JobTracker.UniversalApp.Models
 {
     public static class SupportedLanguages
     {
-        public const string English = "en";
+        public const string English = "en-US";
         public const string Polish = "pl";
-        public const string German = "de";
-        public const string Spanish = "sp";
-        public const string Italian = "it";
-        public const string French = "fr";
-        public static readonly List<string> List = new List<string>{ English, German, French, Spanish, Italian, Polish };
+        public const string German = "de-DE";
+        //public const string Spanish = "sp-SP";
+        //public const string Italian = "it-IT";
+        public const string French = "fr-FR";
+        public static readonly List<string> List = new List<string>{ English, German, French, Polish };
     }
 }

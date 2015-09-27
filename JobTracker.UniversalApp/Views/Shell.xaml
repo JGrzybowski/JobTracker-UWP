@@ -55,7 +55,7 @@
                 <Controls:HamburgerButtonInfo PageType="views:SettingsPage">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Setting" Width="48" Height="48" />
-                        <TextBlock Text="Settings" VerticalAlignment="Center" Margin="12,0,0,0" />
+                        <TextBlock x:Uid="SettingsButton" Text="" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
                 
