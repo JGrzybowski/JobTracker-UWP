@@ -19,12 +19,6 @@
         <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
 
             <Controls:HamburgerMenu.PrimaryButtons>
-                <Controls:HamburgerButtonInfo PageType="views:MainPage" ClearHistory="True">
-                    <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Home" Width="48" Height="48" />
-                        <TextBlock Text="Home" VerticalAlignment="Center" Margin="12,0,0,0" />
-                    </StackPanel>
-                </Controls:HamburgerButtonInfo>
                 <Controls:HamburgerButtonInfo PageType="views:UserDataPage" PageParameter="">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Contact" Width="48" Height="48" />
@@ -35,6 +29,18 @@
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Library" Width="48" Height="48" />
                         <TextBlock Text="Education" VerticalAlignment="Center" Margin="12,0,0,0" />
+                    </StackPanel>
+                </Controls:HamburgerButtonInfo>
+                <Controls:HamburgerButtonInfo PageType="views:EducationPage" PageParameter="{x:Bind ViewModel.UserData.Jobs, Mode=OneWay}">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Manage" Width="48" Height="48" />
+                        <TextBlock Text="Work Experience" VerticalAlignment="Center" Margin="12,0,0,0" />
+                    </StackPanel>
+                </Controls:HamburgerButtonInfo>
+                <Controls:HamburgerButtonInfo PageType="views:EducationPage" PageParameter="{x:Bind ViewModel.UserData.Projects, Mode=OneWay}">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Highlight" Width="48" Height="48" />
+                        <TextBlock Text="Projects" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
                 <!--<ItemsControl ItemsSource="{Binding Sections}">

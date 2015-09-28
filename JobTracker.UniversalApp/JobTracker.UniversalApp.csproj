@@ -117,9 +117,16 @@
     <Compile Include="Models\CV\ITranslation.cs" />
     <Compile Include="Models\CV\ISection.cs" />
     <Compile Include="Models\CV\ISectionItem.cs" />
+    <Compile Include="Models\CV\JobItem.cs" />
+    <Compile Include="Models\CV\JobSection.cs" />
+    <Compile Include="Models\CV\JobTranslation.cs" />
     <Compile Include="Models\CV\PeriodicalItem.cs" />
+    <Compile Include="Models\CV\ProjectItem.cs" />
+    <Compile Include="Models\CV\ProjectSection.cs" />
+    <Compile Include="Models\CV\ProjectTranslation.cs" />
     <Compile Include="Models\CV\Section.cs" />
     <Compile Include="Models\CV\SectionItem.cs" />
+    <Compile Include="Models\CV\TranslationBase.cs" />
     <Compile Include="Models\EmailAddress.cs" />
     <Compile Include="Models\ExampleData.cs" />
     <Compile Include="Models\ISwappableCollection.cs" />

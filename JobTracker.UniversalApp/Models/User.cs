@@ -32,22 +32,20 @@ namespace JobTracker.Models
 
 
         public EducationSection Education { get; set; }
-        //public JobsSection Jobs { get; set; }
-        //public ProjectsSection Projects { get; set; }
+        public JobSection Jobs { get; set; }
+        public ProjectSection Projects { get; set; }
 
         public User()
         {
             Education = new EducationSection();
-            //Jobs = new JobsSection();
-            //Projects = new ProjectsSection();
+            Jobs = new JobSection();
+            Projects = new ProjectSection();
         }
 
 
         public const string SectionsPropertyName = "Sections";
         //public List<ISection> CustomSections { get; set; }
-        //public List<ISection> Sections { get { return new List<ISection>{ Education,
-            //Jobs, Projects
-        //}; } }
+        public List<ISection> Sections { get { return new List<ISection>{ Education,Jobs, Projects }; } }
 
         private static readonly Type[] EmptyTypes = new Type[0];
 
