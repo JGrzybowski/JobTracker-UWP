@@ -50,7 +50,7 @@ namespace JobTracker.UniversalApp.ViewModels
 
         public void GotoDetailsPage()
         {
-            this.NavigationService.Navigate(typeof(Views.DetailPage), this.Value);
+            //this.NavigationService.Navigate(typeof(Views.DetailPage), this.Value);
         }
     }
 }

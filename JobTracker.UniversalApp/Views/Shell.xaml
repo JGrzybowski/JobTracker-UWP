@@ -6,6 +6,7 @@
     xmlns:vm="using:JobTracker.UniversalApp.ViewModels"
     xmlns:views="using:JobTracker.UniversalApp.Views"
     xmlns:CV="using:JobTracker.Models.CV"
+    xmlns:system ="using:System"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="ThisPage">
@@ -25,19 +26,19 @@
                         <TextBlock Text="User" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:EducationPage" PageParameter="{x:Bind ViewModel.UserData.Education, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Education, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Library" Width="48" Height="48" />
                         <TextBlock Text="Education" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:EducationPage" PageParameter="{x:Bind ViewModel.UserData.Jobs, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Jobs, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Manage" Width="48" Height="48" />
                         <TextBlock Text="Work Experience" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:EducationPage" PageParameter="{x:Bind ViewModel.UserData.Projects, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Projects, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Highlight" Width="48" Height="48" />
                         <TextBlock Text="Projects" VerticalAlignment="Center" Margin="12,0,0,0" />

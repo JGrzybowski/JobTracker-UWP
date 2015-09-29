@@ -43,11 +43,8 @@ namespace JobTracker.Models
         }
 
 
-        public const string SectionsPropertyName = "Sections";
-        //public List<ISection> CustomSections { get; set; }
-        public List<ISection> Sections { get { return new List<ISection>{ Education,Jobs, Projects }; } }
-
-        private static readonly Type[] EmptyTypes = new Type[0];
+        //[XmlIgnore]
+        //public List<Section<>> Sections { get { return new List<Section<>>{ Education,Jobs, Projects }; } }
 
         // override object.Equals
         public override bool Equals(object obj)

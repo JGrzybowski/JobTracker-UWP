@@ -117,6 +117,7 @@
     <Compile Include="Models\CV\ITranslation.cs" />
     <Compile Include="Models\CV\ISection.cs" />
     <Compile Include="Models\CV\ISectionItem.cs" />
+    <Compile Include="Models\CV\IWithTranslation.cs" />
     <Compile Include="Models\CV\JobItem.cs" />
     <Compile Include="Models\CV\JobSection.cs" />
     <Compile Include="Models\CV\JobTranslation.cs" />
@@ -143,21 +144,15 @@
     <Compile Include="Services\ResourcesServices\ILocalizedStringsProvider.cs" />
     <Compile Include="Services\SettingsServices\ISettingsService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
-    <Compile Include="ViewModels\EducationItemPageViewModel.cs" />
-    <Compile Include="ViewModels\EducationPageViewModel.cs" />
+    <Compile Include="ViewModels\ISectionPageViewModel.cs" />
+    <Compile Include="ViewModels\SectionPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\UserDataPageViewModel.cs" />
-    <Compile Include="Views\DetailPage.xaml.cs">
-      <DependentUpon>DetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EducationItemPage.xaml.cs">
-      <DependentUpon>EducationItemPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EducationPage.xaml.cs">
-      <DependentUpon>EducationPage.xaml</DependentUpon>
+    <Compile Include="Views\SectionPage.xaml.cs">
+      <DependentUpon>SectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -206,15 +201,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\DetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EducationItemPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EducationPage.xaml">
+    <Page Include="Views\SectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

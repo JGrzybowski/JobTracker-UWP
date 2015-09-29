@@ -13,22 +13,25 @@ using Windows.UI.Xaml.Navigation;
 
 namespace JobTracker.UniversalApp.ViewModels
 {
-    public class EducationPageViewModel : JobTracker.UniversalApp.Mvvm.ViewModelBase
+    public class SectionPageViewModel<TSection, TItem, TTranslation> : JobTracker.UniversalApp.Mvvm.ViewModelBase, ISectionPageViewModel
+        where TSection : class, ISection<TItem>, ISection
+        where TItem : class, ISectionItem<TTranslation>, new()
+        where TTranslation : class, ITranslation, new()
     {
-        public EducationPageViewModel() : base()
+        public SectionPageViewModel() : base()
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                this.Section = ExampleData.ExampleUser.Education;
+                //this.Section = ExampleData.ExampleUser.Education as TSection;
                 SelectedItem = Section.Items[0];
             }
         }
 
-        private EducationSection _Section;
-        public EducationSection Section { get { return _Section; } set { Set(ref _Section, value); } }
+        private TSection _Section;
+        public TSection Section { get { return _Section; } set { Set(ref _Section, value); } }
 
-        private EducationItem _SelectedItem;
-        public EducationItem SelectedItem {
+        private TItem _SelectedItem;
+        public TItem SelectedItem {
             get { return _SelectedItem; }
             set
             {
@@ -57,7 +60,7 @@ namespace JobTracker.UniversalApp.ViewModels
             if (!string.IsNullOrWhiteSpace(itemTitle))
             {
                 try {
-                    var newItem = new EducationItem() { Name = itemTitle };
+                    var newItem = new TItem() { Name = itemTitle };
                     Section.Items.Add(newItem);
                     SelectedItem = newItem;
                     AddItemPanelVisibility = Visibility.Collapsed;
@@ -69,7 +72,6 @@ namespace JobTracker.UniversalApp.ViewModels
                 }
             }
         }
-
         public void RemoveItem()
         {
             if(IsAnyItemSelected)
@@ -80,6 +82,7 @@ namespace JobTracker.UniversalApp.ViewModels
                 this.RemoveItemPanelVisibility = Visibility.Collapsed;
             }
         }
+
         public bool IsAnyItemSelected
         {
             get { return SelectedItem != null; }
@@ -87,10 +90,17 @@ namespace JobTracker.UniversalApp.ViewModels
 
         public void AddTranslation(string languageTag)
         {
-            SelectedItem.Translations.Add(new EducationTranslation(languageTag));
+            //OPTIMIZE
+            object[] args = { languageTag };
+            TTranslation translation = (TTranslation)Activator.CreateInstance(typeof(TTranslation), args);
+                        
+            SelectedItem.Translations.Add(translation);
             RaisePropertyChanged(nameof(AvaliableNewLanguages));
         }
-
+        private TTranslation createTranslation(string languageTag, Func<string, TTranslation> f)
+        {
+            return f(languageTag);
+        }
         public void RemoveTranslation()
         {
             RaisePropertyChanged(nameof(AvaliableNewLanguages));
@@ -99,7 +109,7 @@ namespace JobTracker.UniversalApp.ViewModels
         public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             base.OnNavigatedTo(parameter, mode, state);
-            var section = parameter as EducationSection;
+            var section = parameter as TSection;
             if (section != null)
                 _Section = section;
         }

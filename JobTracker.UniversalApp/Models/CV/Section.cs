@@ -14,27 +14,8 @@ namespace JobTracker.Models.CV
         public Section(string resourceStringName)
         {
             Items = new SectionItemsCollection<T>();
-            ////TODO cache titles in LanguageManager!
-            //this.resourceStringName = resourceStringName;
-            //var title = new TranslatableString();
-            
-            //foreach (CultureInfo culture in stringsProvider.AvaliableLanguages)
-            //{
-            //    title.Add(culture, stringsProvider.GetString(resourceStringName, culture));
-            //}
-            //Title = title;
         }
 
-        //public Section<T>() where T : ISectionItem
-        //{
-        //    Title = new TranslatableString();
-        //    //foreach(CultureInfo ci )
-        //    //{
-        //    //    foreach()
-        //    //}
-        //}
-
-        //public ITranslatable Title { get;  set; }
         [XmlArray("Items")]
         public SectionItemsCollection<T> Items { get; set; }
 
@@ -56,15 +37,5 @@ namespace JobTracker.Models.CV
         {
             return 13 * Items.GetHashCode();
         }
-
-        //public IEnumerator<T> GetEnumerator()
-        //{
-        //    return Items.GetEnumerator();
-        //}
-
-        //System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        //{
-        //    return GetEnumerator();
-        //}
     }
 }

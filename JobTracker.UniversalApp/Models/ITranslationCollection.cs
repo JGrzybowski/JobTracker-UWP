@@ -12,4 +12,9 @@ namespace JobTracker.Models
     {
         
     }
+
+    public interface ITranslationCollection<TTranslation> : ICollection<TTranslation>, ITranslationCollection
+    {
+
+    }
 }

@@ -22,16 +22,16 @@ namespace JobTracker.UniversalApp.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EducationPage : Page
+    public sealed partial class SectionPage : Page
     {
-        public EducationPage()
+        public SectionPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Disabled;
         }
 
         // strongly-typed view models enable x:bind
-        public EducationPageViewModel ViewModel => DataContext as EducationPageViewModel;
+        public ISectionPageViewModel ViewModel => DataContext as ISectionPageViewModel;
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +45,7 @@ namespace JobTracker.UniversalApp.Views
 
         private void ConfirmAddItemButtom_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.AddItem(this.NewItemsTitleTextBox.Text);
+            ViewModel.AddItem(this.NewItemsNameTextBox.Text);
         }
 
         private void CancelRemoveItemButtom_Click(object sender, RoutedEventArgs e)

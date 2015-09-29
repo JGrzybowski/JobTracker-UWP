@@ -11,5 +11,8 @@ namespace JobTracker.Models.CV
     {
         [XmlAttribute("Name")]
         string Name { get; set; }
+
     }
+
+    public interface ISectionItem<TTranslation> : ISectionItem, IWithTranslation<TTranslation> where TTranslation : ITranslation { }
 }

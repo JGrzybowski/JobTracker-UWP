@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="JobTracker.UniversalApp.Views.EducationPage"
+    x:Class="JobTracker.UniversalApp.Views.SectionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:JobTracker.UniversalApp.Views"
@@ -17,9 +17,9 @@
     mc:Ignorable="d">
 
 
-    <Page.DataContext>
-        <vm:EducationPageViewModel />
-    </Page.DataContext>
+    <!--<Page.DataContext>
+        <vm:SectionPageViewModel  />
+    </Page.DataContext>-->
 
     <Page.Resources>
         <Converters:NegateConverter x:Key="NegateConverter" />
@@ -78,7 +78,7 @@
             <ScrollViewer Padding="12,8,0,0" VerticalScrollBarVisibility="Auto">
                 <ListView x:Name="ItemsList" SelectionMode="Single"
                               SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                              ItemsSource="{x:Bind ViewModel.Section.Items, Mode=OneWay}"
+                              ItemsSource="{Binding Section.Items, Mode=OneWay}"
                               ItemTemplate="{StaticResource EducationItemTemplate}" HorizontalContentAlignment="Stretch" CanReorderItems="True" />
             </ScrollViewer>
         </Grid>
@@ -108,7 +108,7 @@
                 <AppBarButton.Flyout>
                     <Flyout>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="NewItemsTitleTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" />
+                            <TextBox x:Name="NewItemsNameTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" />
                             <Button x:Name="ConfirmAddItemButtom" Grid.Column="1"  Padding="4" Content="OK" Margin="4" Click="ConfirmAddItemButtom_Click"/>
                         </StackPanel>
                     </Flyout>
@@ -130,7 +130,7 @@
                 </AppBarButton>
 
             </CommandBar>
-            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{x:Bind ViewModel.SelectedItem.Name, Mode=OneWay}" Foreground="White"  Padding="16,0"/>
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{Binding SelectedItem.Name, Mode=OneWay}" Foreground="White"  Padding="16,0"/>
             <StackPanel HorizontalAlignment="Left" Padding="16,0">
                 <DatePicker Date="{Binding SelectedItem.TimePeriod.From, Converter={StaticResource DateTimeOffsetConverter}, Mode=TwoWay}" />
                 <CheckBox x:Name="TillNowCheckbox" Content="Till now" 
@@ -142,7 +142,7 @@
                 x:Name="DetailContentPresenter"
                 BorderThickness="1,0,0,0"
                 BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
-                ItemsSource="{x:Bind ViewModel.SelectedItem.Translations, Mode=OneWay}"
+                ItemsSource="{Binding SelectedItem.Translations, Mode=OneWay}"
                 ItemTemplate="{StaticResource EducationItemEditorTemplate}" Margin="12"/>
         </StackPanel>
         <!--#endregion-->

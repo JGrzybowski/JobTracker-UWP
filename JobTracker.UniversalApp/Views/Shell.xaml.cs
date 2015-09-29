@@ -24,8 +24,7 @@ namespace JobTracker.UniversalApp.Views
         {
             Window.Dispatcher.Dispatch(() =>
             {
-                Instance.BusyIndicator.Visibility = (busy)
-               ? Visibility.Visible : Visibility.Collapsed;
+                Instance.BusyIndicator.Visibility = (busy) ? Visibility.Visible : Visibility.Collapsed;
                 Instance.BusyRing.IsActive = busy;
                 Instance.BusyText.Text = text ?? string.Empty;
             });
