@@ -17,21 +17,22 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace JobTracker.UniversalApp.Views
+namespace JobTracker.UniversalApp.Views.SectionPages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SectionPage : Page
+    public sealed partial class JobSectionPage : Page
     {
-        public SectionPage()
+        public JobSectionPage()
         {
+            this.DataContext = new SectionPageViewModel<JobSection, JobItem, JobTranslation>();
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Disabled;
         }
 
         // strongly-typed view models enable x:bind
-        public ISectionPageViewModel ViewModel => DataContext as ISectionPageViewModel;
+        public SectionPageViewModel<JobSection, JobItem, JobTranslation> ViewModel => DataContext as SectionPageViewModel<JobSection, JobItem, JobTranslation>;
 
         private void AddItemButton_Click(object sender, RoutedEventArgs e)
         {

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:JobTracker.UniversalApp.Views"
     xmlns:vm="using:JobTracker.UniversalApp.ViewModels"
-    xmlns:views="using:JobTracker.UniversalApp.Views"
+    xmlns:sectionPages="using:JobTracker.UniversalApp.Views.SectionPages"
     xmlns:CV="using:JobTracker.Models.CV"
     xmlns:system ="using:System"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,25 +20,25 @@
         <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
 
             <Controls:HamburgerMenu.PrimaryButtons>
-                <Controls:HamburgerButtonInfo PageType="views:UserDataPage" PageParameter="">
+                <Controls:HamburgerButtonInfo PageType="local:UserDataPage" PageParameter="">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Contact" Width="48" Height="48" />
                         <TextBlock Text="User" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Education, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="sectionPages:EducationSectionPage" PageParameter="{x:Bind ViewModel.UserData.Education, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Library" Width="48" Height="48" />
                         <TextBlock Text="Education" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Jobs, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="sectionPages:JobSectionPage" PageParameter="{x:Bind ViewModel.UserData.Jobs, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Manage" Width="48" Height="48" />
                         <TextBlock Text="Work Experience" VerticalAlignment="Center" Margin="12,0,0,0" />
                     </StackPanel>
                 </Controls:HamburgerButtonInfo>
-                <Controls:HamburgerButtonInfo PageType="views:SectionPage" PageParameter="{x:Bind ViewModel.UserData.Projects, Mode=OneWay}">
+                <Controls:HamburgerButtonInfo PageType="sectionPages:ProjectSectionPage" PageParameter="{x:Bind ViewModel.UserData.Projects, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Highlight" Width="48" Height="48" />
                         <TextBlock Text="Projects" VerticalAlignment="Center" Margin="12,0,0,0" />
@@ -59,7 +59,7 @@
             </Controls:HamburgerMenu.PrimaryButtons>
 
             <Controls:HamburgerMenu.SecondaryButtons>
-                <Controls:HamburgerButtonInfo PageType="views:SettingsPage">
+                <Controls:HamburgerButtonInfo PageType="local:SettingsPage">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Setting" Width="48" Height="48" />
                         <TextBlock x:Uid="SettingsButton" Text="" VerticalAlignment="Center" Margin="12,0,0,0" />

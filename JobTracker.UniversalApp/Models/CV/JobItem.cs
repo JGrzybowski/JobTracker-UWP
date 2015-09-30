@@ -7,11 +7,8 @@ using System.Xml.Serialization;
 
 namespace JobTracker.Models.CV
 {
-    public class JobItem : PeriodicalItem
+    public class JobItem : PeriodicalTranslatedItem<JobTranslation>
     {
         public JobItem() : base() { }
-
-        [XmlArray("Translations")]
-        public TranslationCollection<JobTranslation> Translations { get; set; }
     }
 }

@@ -122,6 +122,7 @@
     <Compile Include="Models\CV\JobSection.cs" />
     <Compile Include="Models\CV\JobTranslation.cs" />
     <Compile Include="Models\CV\PeriodicalItem.cs" />
+    <Compile Include="Models\CV\PeriodicalTranslatedItem.cs" />
     <Compile Include="Models\CV\ProjectItem.cs" />
     <Compile Include="Models\CV\ProjectSection.cs" />
     <Compile Include="Models\CV\ProjectTranslation.cs" />
@@ -151,8 +152,14 @@
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\UserDataPageViewModel.cs" />
-    <Compile Include="Views\SectionPage.xaml.cs">
-      <DependentUpon>SectionPage.xaml</DependentUpon>
+    <Compile Include="Views\SectionPages\ProjectSectionPage.xaml.cs">
+      <DependentUpon>ProjectSectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SectionPages\JobSectionPage.xaml.cs">
+      <DependentUpon>JobSectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SectionPages\EducationSectionPage.xaml.cs">
+      <DependentUpon>EducationSectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -201,7 +208,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SectionPage.xaml">
+    <Page Include="Views\SectionPages\ProjectSectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SectionPages\JobSectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SectionPages\EducationSectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

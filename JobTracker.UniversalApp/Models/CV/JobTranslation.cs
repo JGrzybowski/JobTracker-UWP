@@ -10,7 +10,7 @@ namespace JobTracker.Models.CV
 {
     public class JobTranslation : TranslationBase
     {
-        protected JobTranslation() : base() { }
+        public JobTranslation() : base() { }
         public JobTranslation(string languageTag) : base(languageTag) { }
 
         [XmlAttribute("CompanyName")]

@@ -9,12 +9,12 @@ namespace JobTracker.Models.CV
 {
     public class ProjectTranslation : TranslationBase
     {
-        protected ProjectTranslation() :base() { }
+        public ProjectTranslation() : base() { }
         public ProjectTranslation(string languageTag) : base(languageTag) { }
 
-        [XmlAttribute("Title")]
-        public string Title { get { return title; } set { Set(ref title, value); } }
-        private string title;
+        [XmlAttribute("Name")]
+        public string Name { get { return name; } set { Set(ref name, value); } }
+        private string name;
 
         [XmlAttribute("Description")]
         public string Description { get { return description; } set { Set(ref description, value); } }

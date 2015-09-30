@@ -120,7 +120,7 @@ namespace JobTracker.UniversalApp.ViewModels
             {
                 if (!IsAnyItemSelected)
                     return null;
-                return new ObservableCollection<string>( SupportedLanguages.List.Except(SelectedItem.Translations.Select(eduItem => eduItem.LanguageTag)));
+                return new ObservableCollection<string>(SupportedLanguages.List.Except(SelectedItem.Translations.Select(item => item.LanguageTag)));
             }
             //set { Set(ref _AvaliableNewLanguages, value); }
         }

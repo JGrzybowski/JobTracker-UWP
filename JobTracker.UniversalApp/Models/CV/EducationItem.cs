@@ -10,24 +10,20 @@ using System.Xml.Serialization;
 namespace JobTracker.Models.CV
 {
     public enum EducationLevel {HighSchool, Bsc, Msc, Phd, Prof, Other, None};
-    public class EducationItem : PeriodicalItem
+    public class EducationItem : PeriodicalTranslatedItem<EducationTranslation>
     {
         public EducationItem(): base()
         {
             Level = EducationLevel.None;
-            Translations = new TranslationCollection<EducationTranslation>();
         }
-        public EducationItem(string languageTag) : base()
-        {
-            Translations = new TranslationCollection<EducationTranslation>() { new EducationTranslation(languageTag) };
-            Level = EducationLevel.None;
-        }
+        //public EducationItem(string languageTag) : base()
+        //{
+        //    Translations = new TranslationCollection<EducationTranslation>() { new EducationTranslation(languageTag) };
+        //    Level = EducationLevel.None;
+        //}
 
         [XmlAttribute("EducationLevel")]
         public EducationLevel Level { get; set; }
-
-        [XmlArray("Translations")]
-        public TranslationCollection<EducationTranslation> Translations { get; set; }
 
         // override object.Equals
         public override bool Equals(object obj)
