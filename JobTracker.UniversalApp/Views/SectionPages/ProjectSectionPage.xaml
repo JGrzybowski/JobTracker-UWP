@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="JobTracker.UniversalApp.Views.SectionPage"
+    x:Class="JobTracker.UniversalApp.Views.SectionPages.ProjectSectionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:JobTracker.UniversalApp.Views"
+    xmlns:local="using:JobTracker.UniversalApp.Views.SectionPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:JobTracker.UniversalApp.ViewModels"
@@ -26,13 +26,14 @@
         <Converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Converters:LanguageTagToNativeNameConverter x:Key="ToNativeLanguageName" />
-        <DataTemplate x:Key="EducationItemTemplate" x:DataType="CV:EducationItem">
+        
+        <DataTemplate x:Key="ProjectItemTemplate" x:DataType="CV:ProjectItem">
             <StackPanel Orientation="Vertical" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="2">
                 <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="20" />
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="EducationItemEditorTemplate" x:DataType="CV:EducationTranslation">
+        <DataTemplate x:Key="ProjectItemEditorTemplate" x:DataType="CV:ProjectTranslation">
             <Grid BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="0" Margin="0,4,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -42,15 +43,15 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
+                    <!--<RowDefinition/>-->
                 </Grid.RowDefinitions>
                 <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
-                <TextBlock Grid.Row="1" x:Uid="SchoolNameLabel"  Text="School Name:" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind SchoolName, Mode=TwoWay}" />
-                <TextBlock Grid.Row="2" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Domain, Mode=TwoWay}" />
-                <TextBlock Grid.Row="3" x:Uid="DescriptionLabel" Text="Description" VerticalAlignment="Center" />
-                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
+                <TextBlock Grid.Row="1" x:Uid="ProjectNameLabel"  Text="Project Name" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" x:Uid="ProjectDescriptionLabel" Text="Project Description" VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
+                <!--<TextBlock Grid.Row="3" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind , Mode=TwoWay}" />-->
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -66,7 +67,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- header -->
-        <!--<controls:PageHeader Text="Education Page" Frame="{x:Bind Frame}" />-->
+        <!--<controls:PageHeader Text="Project Page" Frame="{x:Bind Frame}" />-->
 
         <!--#region content-->
 
@@ -78,8 +79,8 @@
             <ScrollViewer Padding="12,8,0,0" VerticalScrollBarVisibility="Auto">
                 <ListView x:Name="ItemsList" SelectionMode="Single"
                               SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                              ItemsSource="{Binding Section.Items, Mode=OneWay}"
-                              ItemTemplate="{StaticResource EducationItemTemplate}" HorizontalContentAlignment="Stretch" CanReorderItems="True" />
+                              ItemsSource="{x:Bind ViewModel.Section.Items, Mode=OneWay}"
+                              ItemTemplate="{StaticResource ProjectItemTemplate}" HorizontalContentAlignment="Stretch" CanReorderItems="True" />
             </ScrollViewer>
         </Grid>
         <CommandBar Grid.Row="1" RelativePanel.Below="ConfirmRemoveItemPanel" x:Name="ItemsCommandBar">
@@ -122,7 +123,7 @@
                         <Flyout Placement="Bottom" LocalControls:BindableFlyout.ItemsSource="{Binding AvaliableNewLanguages, Mode=OneWay}" >
                             <LocalControls:BindableFlyout.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <MenuFlyoutItem Text="{Binding Converter={StaticResource ToNativeLanguageName}}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left"/>
+                                    <MenuFlyoutItem Text="{x:Bind Converter={StaticResource ToNativeLanguageName}, Mode=OneWay}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left" Tag="{x:Bind Mode=OneWay}"/>
                                 </DataTemplate>
                             </LocalControls:BindableFlyout.ItemTemplate>
                         </Flyout>
@@ -143,7 +144,7 @@
                 BorderThickness="1,0,0,0"
                 BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
                 ItemsSource="{Binding SelectedItem.Translations, Mode=OneWay}"
-                ItemTemplate="{StaticResource EducationItemEditorTemplate}" Margin="12"/>
+                ItemTemplate="{StaticResource ProjectItemEditorTemplate}" Margin="12"/>
         </StackPanel>
         <!--#endregion-->
     </Grid>

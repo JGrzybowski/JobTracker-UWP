@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace JobTracker.Models
 {
-    public class TranslationCollection<T> : ObservableKeyedCollection<string, T>, INotifyPropertyChanged where T : ITranslation
+    public class TranslationCollection<T> : ObservableKeyedCollection<string, T>, ITranslationCollection<T> where T : ITranslation
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

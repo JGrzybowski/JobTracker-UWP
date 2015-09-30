@@ -6,7 +6,7 @@ namespace JobTracker.Models.CV
 {
     public class EducationTranslation : TranslationBase
     {
-        protected EducationTranslation() : base() { }
+        public EducationTranslation() : base() { }
         public EducationTranslation(string languageTag) : base(languageTag) { }
 
         [XmlAttribute("SchoolName")]

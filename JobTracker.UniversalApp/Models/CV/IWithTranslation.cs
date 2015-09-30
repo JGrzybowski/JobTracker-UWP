@@ -9,6 +9,6 @@ namespace JobTracker.Models.CV
 {
     public interface IWithTranslation<TTranslation> where TTranslation : ITranslation
     {
-        ITranslationCollection<TTranslation> Translations { get; set; }
+        ITranslationCollection<TTranslation> Translations { get; }
     }
 }
