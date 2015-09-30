@@ -123,7 +123,7 @@
                         <Flyout Placement="Bottom" LocalControls:BindableFlyout.ItemsSource="{Binding AvaliableNewLanguages, Mode=OneWay}" >
                             <LocalControls:BindableFlyout.ItemTemplate>
                                 <DataTemplate x:DataType="x:String">
-                                    <MenuFlyoutItem Text="{Binding Converter={StaticResource ToNativeLanguageName}}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left"/>
+                                    <MenuFlyoutItem Text="{x:Bind Converter={StaticResource ToNativeLanguageName}, Mode=OneWay}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left" Tag="{x:Bind Mode=OneWay}"/>
                                 </DataTemplate>
                             </LocalControls:BindableFlyout.ItemTemplate>
                         </Flyout>

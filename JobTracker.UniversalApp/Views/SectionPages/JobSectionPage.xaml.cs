@@ -62,7 +62,7 @@ namespace JobTracker.UniversalApp.Views.SectionPages
             MenuFlyoutItem langButton = sender as MenuFlyoutItem;
             if (langButton != null)
             {
-                ViewModel.AddTranslation(langButton.Text);
+                ViewModel.AddTranslation(langButton.Tag.ToString());
             }
         }
 
