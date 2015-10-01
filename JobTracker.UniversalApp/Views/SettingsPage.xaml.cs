@@ -33,6 +33,7 @@ namespace JobTracker.UniversalApp.Views
             var fileSaver = new FileSavePicker();
             fileSaver.FileTypeChoices.Add("XML file", new List<string> { ".xml" });
             fileSaver.FileTypeChoices.Add("JSON file", new List<string> { ".json" });
+            fileSaver.FileTypeChoices.Add("DocX file", new List<string> { ".docx" });
             fileSaver.DefaultFileExtension = ".xml";
 
             StorageFile file = await fileSaver.PickSaveFileAsync();

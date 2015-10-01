@@ -1,4 +1,5 @@
 ﻿using JobTracker.Models;
+using JobTracker.UniversalApp.Services.CvGeneratingServices;
 using JobTracker.UniversalApp.Views;
 using Newtonsoft.Json;
 using System;
@@ -61,37 +62,47 @@ namespace JobTracker.UniversalApp.ViewModels
         public async void ExportData(StorageFile file)
         {
             var vm = GetShellVM();
-            if (file.FileType == ".xml")
+            if (file!=null)
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(User));
-                using (var stream = await file.OpenStreamForWriteAsync())
+                if (file.FileType == ".xml")
                 {
-                    xmlSerializer.Serialize(stream, vm.UserData);
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(User));
+                    using (var stream = await file.OpenStreamForWriteAsync())
+                    {
+                        xmlSerializer.Serialize(stream, vm.UserData);
+                    }
                 }
-            }
-            else if (file.FileType == ".json")
-            {
-                var json = JsonConvert.SerializeObject(vm.UserData);
-                await FileIO.WriteTextAsync(file, json);
+                else if (file.FileType == ".json")
+                {
+                    var json = JsonConvert.SerializeObject(vm.UserData);
+                    await FileIO.WriteTextAsync(file, json);
+                }
+                else if (file.FileType == ".docx")
+                {
+                    await new BasicCvTemplate().GenerateCV(file, vm.UserData, "en-US");
+                } 
             }
         }
 
         public async void ImportData(StorageFile file)
         {
-            if (file.FileType == ".xml")
+            if (file!=null)
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(User));
-                using (var stream = await file.OpenStreamForReadAsync())
+                if (file.FileType == ".xml")
                 {
-                    User user = xmlSerializer.Deserialize(stream) as User;
-                    GetShellVM().UserData = user;
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(User));
+                    using (var stream = await file.OpenStreamForReadAsync())
+                    {
+                        User user = xmlSerializer.Deserialize(stream) as User;
+                        GetShellVM().UserData = user;
+                    }
                 }
-            }
-            else if (file.FileType == ".json")
-            {
-                var fileText = await FileIO.ReadTextAsync(file);
-                var user = JsonConvert.DeserializeObject<User>(fileText);
-                GetShellVM().UserData = user;
+                else if (file.FileType == ".json")
+                {
+                    var fileText = await FileIO.ReadTextAsync(file);
+                    var user = JsonConvert.DeserializeObject<User>(fileText);
+                    GetShellVM().UserData = user;
+                } 
             }
         }
     }

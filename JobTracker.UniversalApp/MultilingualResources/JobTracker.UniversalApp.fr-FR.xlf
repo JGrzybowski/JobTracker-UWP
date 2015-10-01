@@ -55,6 +55,18 @@
           <target state="translated">Francais</target>
           <note from="MultilingualBuild" annotates="source" priority="2">Native name of the language.</note>
         </trans-unit>
+        <trans-unit id="EducationSectionName" translate="yes" xml:space="preserve">
+          <source>Education</source>
+          <target state="new">Education</target>
+        </trans-unit>
+        <trans-unit id="JobSectionName" translate="yes" xml:space="preserve">
+          <source>Work Experience</source>
+          <target state="new">Work Experience</target>
+        </trans-unit>
+        <trans-unit id="ProjectSectionName" translate="yes" xml:space="preserve">
+          <source>Projects</source>
+          <target state="new">Projects</target>
+        </trans-unit>
       </group>
     </body>
   </file>
