@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Controls\BindableFlyout.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\PeriodFormater.cs" />
     <Compile Include="Converters\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="Converters\LanguageTagToNativeNameConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
@@ -253,7 +254,9 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.de-DE.xlf" />
+    <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.de-DE.xlf">
+      <SubType>Designer</SubType>
+    </XliffResource>
     <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.fr-FR.xlf" />
     <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.pl.xlf" />
   </ItemGroup>

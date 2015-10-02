@@ -36,7 +36,7 @@ namespace JobTracker.Models
                     },
                     new EducationItem() {
                         Name = "Collage",
-                        Level = EducationLevel.Bsc, TimePeriod = new Period() { From = new DateTime(2004,10,01), To = new DateTime(2008,06,30), DatesPartsVisibility= TimeUnit.Months },
+                        Level = EducationLevel.Bsc, TimePeriod = new Period() { From = new DateTime(2004,10,01), To = new DateTime(2008,06,30), DatesPartsVisibility= TimeUnit.MonthAndYear },
                         Translations = new TranslationCollection<EducationTranslation>
                         {
                             new EducationTranslation (SupportedLanguages.English) { Domain = "Metaphysics", SchoolName = "Oxford University"},

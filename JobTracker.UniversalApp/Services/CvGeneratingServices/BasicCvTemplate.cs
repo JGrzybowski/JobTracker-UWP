@@ -1,4 +1,5 @@
 ﻿using JobTracker.Models;
+using JobTracker.UniversalApp.Converters;
 using JobTracker.UniversalApp.Services.ResourcesServices;
 using Syncfusion.DocIO.DLS;
 using System;
@@ -34,7 +35,9 @@ namespace JobTracker.UniversalApp.Services.CvGeneratingServices
                 contactParagraph.AppendText(user.Fax.ToString());
                 contactParagraph.AppendBreak(BreakType.LineBreak);
             }
-            
+
+            PeriodFormater formater = new PeriodFormater();
+
             var eduParagraph = section.AddParagraph();
             eduParagraph.ApplyStyle(BuiltinStyle.Heading1);
             eduParagraph.AppendText(stringsProvider.GetLocalizedString(user.Education.ResourceStringName, languageTag));
@@ -44,7 +47,7 @@ namespace JobTracker.UniversalApp.Services.CvGeneratingServices
                     var txt = item.Translations[languageTag];
                     eduParagraph = section.AddParagraph();
                     eduParagraph.ApplyStyle(BuiltinStyle.ListBullet);
-                    eduParagraph.AppendText(string.Format("{0} {1}", txt.SchoolName, item.TimePeriod));
+                    eduParagraph.AppendText(string.Format("{0} {1}", txt.SchoolName, formater.Convert(item.TimePeriod, typeof(string),null,languageTag)));
                     eduParagraph = section.AddParagraph();
                     eduParagraph.ApplyStyle(BuiltinStyle.ListContinue2);
                     eduParagraph.AppendText(string.Format("{0} {1}", txt.Domain, txt.Description));
@@ -61,11 +64,9 @@ namespace JobTracker.UniversalApp.Services.CvGeneratingServices
                     var txt = item.Translations[languageTag];
                     jobParagraph = section.AddParagraph();
                     jobParagraph.ApplyStyle(BuiltinStyle.ListBullet);
-                    jobParagraph.AppendText(string.Format("{0}, {1} {2}", txt.CompanyName, txt.Position, item.TimePeriod));
+                    jobParagraph.AppendText(string.Format("{0}, {1} {2}", txt.CompanyName, txt.Position, formater.Convert(item.TimePeriod, typeof(string), null, languageTag)));
                     jobParagraph = section.AddParagraph();
                     jobParagraph.ApplyStyle(BuiltinStyle.ListContinue2);
-                    jobParagraph.AppendText(string.Format("{0}", txt.Position));
-                    jobParagraph.AppendBreak(BreakType.LineBreak);
                     jobParagraph.AppendText(string.Format("{0}", txt.Responsibilities));
                 }
             }
@@ -80,7 +81,7 @@ namespace JobTracker.UniversalApp.Services.CvGeneratingServices
                     var txt = item.Translations[languageTag];
                     projectParagraph = section.AddParagraph();
                     projectParagraph.ApplyStyle(BuiltinStyle.ListBullet);
-                    projectParagraph.AppendText(string.Format("{0} {1}", txt.Name, item.TimePeriod));
+                    projectParagraph.AppendText(string.Format("{0} {1}", txt.Name, formater.Convert(item.TimePeriod, typeof(string), null, languageTag)));
                     projectParagraph = section.AddParagraph();
                     projectParagraph.ApplyStyle(BuiltinStyle.ListContinue2);
                     projectParagraph.AppendText(string.Format("{0}", txt.Description));

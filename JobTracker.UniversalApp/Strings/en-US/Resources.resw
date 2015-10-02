@@ -146,6 +146,9 @@
     <value>English</value>
     <comment>Native name of the language.</comment>
   </data>
+  <data name="Now" xml:space="preserve">
+    <value>Now</value>
+  </data>
   <data name="ProjectSectionName" xml:space="preserve">
     <value>Projects</value>
   </data>

@@ -67,6 +67,10 @@
           <source>Projects</source>
           <target state="new">Projects</target>
         </trans-unit>
+        <trans-unit id="Now" translate="yes" xml:space="preserve">
+          <source>Now</source>
+          <target state="new">Now</target>
+        </trans-unit>
       </group>
     </body>
   </file>
