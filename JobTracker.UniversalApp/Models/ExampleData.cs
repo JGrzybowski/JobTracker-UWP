@@ -52,7 +52,7 @@ namespace JobTracker.Models
                     new JobItem()
                     {
                         Name = "First Job",
-                        TimePeriod = new Period() {From= new DateTime(1996,6,14), To=new DateTime(2001,11,2), DatesPartsVisibility=TimeUnit.Full },
+                        TimePeriod = new Period() {From = new DateTime(1996,6,14), To = new DateTime(2001,11,2), DatesPartsVisibility = TimeUnit.Full },
                         Translations= new TranslationCollection<JobTranslation>
                         {
                             new JobTranslation(SupportedLanguages.English) {CompanyName = "Creatures Inc.", Position="Door Conservator", Responsibilities="Cleaning the portal-doors." },
@@ -68,7 +68,7 @@ namespace JobTracker.Models
                     new ProjectItem
                     {
                         Name = "JobTracker",
-                        TimePeriod = new Period() {From = new DateTime(2015,03,01), TillNow= true, DatesPartsVisibility=TimeUnit.MonthAndYear},
+                        TimePeriod = new Period() {From = new DateTime(2015,03,01), TillNow = true, DatesPartsVisibility = TimeUnit.MonthAndYear},
                         Translations = new TranslationCollection<ProjectTranslation>
                         {
                             new ProjectTranslation(SupportedLanguages.English) {Name = "JobTracker", Description = "Program allowing to create and customize CV, also tracks all your job applications. Designed as Windows Universal Application." },
