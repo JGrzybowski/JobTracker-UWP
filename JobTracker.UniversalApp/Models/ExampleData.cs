@@ -14,7 +14,7 @@ namespace JobTracker.Models
     {
         public static User ExampleUser = new User()
         {
-            Address = new Address { City = "London", Country = "Great Britain", Line1 = "Imaginary Street 13", Line2="", ZipCode = "SW1A 2AB" },
+            Address = new Address { City = "London", Country = "Great Britain", Line1 = "Imaginary Street 13", Line2 = "", ZipCode = "SW1A 2AB" },
             DateOfBirth = new DateTime(1985, 09, 26),
             Email = "johndoe@example.com",
             FirstName = "John",
@@ -36,11 +36,43 @@ namespace JobTracker.Models
                     },
                     new EducationItem() {
                         Name = "Collage",
-                        Level = EducationLevel.Bsc, TimePeriod = new Period() { From = new DateTime(2004,10,01), To = new DateTime(2008,06,30), DatesPartsVisibility= TimeUnit.Months },
+                        Level = EducationLevel.Bsc, TimePeriod = new Period() { From = new DateTime(2004,10,01), To = new DateTime(2008,06,30), DatesPartsVisibility= TimeUnit.MonthAndYear },
                         Translations = new TranslationCollection<EducationTranslation>
                         {
                             new EducationTranslation (SupportedLanguages.English) { Domain = "Metaphysics", SchoolName = "Oxford University"},
                             new EducationTranslation (SupportedLanguages.Polish) { Domain = "Metafizyka", SchoolName = "Uniwersytet Oxfordzki" }
+                        }
+                    }
+                }
+            },
+            Jobs = new JobSection
+            {
+                Items = new SectionItemsCollection<JobItem>
+                {
+                    new JobItem()
+                    {
+                        Name = "First Job",
+                        TimePeriod = new Period() {From = new DateTime(1996,6,14), To = new DateTime(2001,11,2), DatesPartsVisibility = TimeUnit.Full },
+                        Translations= new TranslationCollection<JobTranslation>
+                        {
+                            new JobTranslation(SupportedLanguages.English) {CompanyName = "Creatures Inc.", Position="Door Conservator", Responsibilities="Cleaning the portal-doors." },
+                            new JobTranslation(SupportedLanguages.Polish) {CompanyName = "Potworki i sp.", Position="Konserwator Drzwi", Responsibilities="Czyszczenie drzwi-portali" }
+                        }
+                    }
+                }
+            },
+            Projects = new ProjectSection
+            {
+                Items = new SectionItemsCollection<ProjectItem>
+                {
+                    new ProjectItem
+                    {
+                        Name = "JobTracker",
+                        TimePeriod = new Period() {From = new DateTime(2015,03,01), TillNow = true, DatesPartsVisibility = TimeUnit.MonthAndYear},
+                        Translations = new TranslationCollection<ProjectTranslation>
+                        {
+                            new ProjectTranslation(SupportedLanguages.English) {Name = "JobTracker", Description = "Program allowing to create and customize CV, also tracks all your job applications. Designed as Windows Universal Application." },
+                            new ProjectTranslation(SupportedLanguages.Polish) {Name = "JobTracker", Description = "Program pomagający tworzyć CV oraz pozwalający śledzić własne poszukiwania i próby zdobycia pracy." }
                         }
                     }
                 }

@@ -132,13 +132,25 @@
   <data name="DomainLabel.Text" xml:space="preserve">
     <value>Domain</value>
   </data>
+  <data name="EducationSectionName" xml:space="preserve">
+    <value>Education</value>
+  </data>
   <data name="FilterButton.Label" xml:space="preserve">
     <value>Filter</value>
     <comment>Verb describing filtering.</comment>
   </data>
+  <data name="JobSectionName" xml:space="preserve">
+    <value>Work Experience</value>
+  </data>
   <data name="LanguageName" xml:space="preserve">
     <value>English</value>
     <comment>Native name of the language.</comment>
+  </data>
+  <data name="Now" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="ProjectSectionName" xml:space="preserve">
+    <value>Projects</value>
   </data>
   <data name="RemoveItemButton.Label" xml:space="preserve">
     <value>Remove Item</value>

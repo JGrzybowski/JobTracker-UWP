@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobTracker.UniversalApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,5 +27,8 @@ namespace JobTracker.UniversalApp.Views
         {
             this.InitializeComponent();
         }
+
+        // strongly-typed view models enable x:bind
+        public UserDataPageViewModel ViewModel => DataContext as UserDataPageViewModel;
     }
 }

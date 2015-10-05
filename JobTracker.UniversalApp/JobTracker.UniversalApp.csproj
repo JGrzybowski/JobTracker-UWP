@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Controls\BindableFlyout.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\PeriodFormater.cs" />
     <Compile Include="Converters\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="Converters\LanguageTagToNativeNameConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
@@ -141,6 +142,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CvGeneratingServices\BasicCvTemplate.cs" />
+    <Compile Include="Services\CvGeneratingServices\FontStyleBase.cs" />
     <Compile Include="Services\ResourcesServices\ReswStringsProvider.cs" />
     <Compile Include="Services\ResourcesServices\ILocalizedStringsProvider.cs" />
     <Compile Include="Services\SettingsServices\ISettingsService.cs" />
@@ -246,9 +249,14 @@
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+    <SDKReference Include="SyncfusionUniversalWindows, Version=13.3.0.7">
+      <Name>Syncfusion Controls for UWP XAML %28SyncfusionUniversalWindows, Version=13.3.0.7%29</Name>
+    </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.de-DE.xlf" />
+    <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.de-DE.xlf">
+      <SubType>Designer</SubType>
+    </XliffResource>
     <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.fr-FR.xlf" />
     <XliffResource Include="MultilingualResources\JobTracker.UniversalApp.pl.xlf" />
   </ItemGroup>

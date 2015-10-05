@@ -10,9 +10,10 @@ namespace JobTracker.Models.CV
 {
     public class Section<T> : BindableBase, ISection<T> where T : ISectionItem, new()
     {
-        protected string resourceStringName;
-        public Section(string resourceStringName)
+        public string ResourceStringName;
+        public Section(string resourceStringName) : base()
         {
+            this.ResourceStringName = resourceStringName;
             Items = new SectionItemsCollection<T>();
         }
 
