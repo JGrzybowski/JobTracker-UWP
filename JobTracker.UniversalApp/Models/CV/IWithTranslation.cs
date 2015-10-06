@@ -10,5 +10,6 @@ namespace JobTracker.Models.CV
     public interface IWithTranslation<TTranslation> where TTranslation : ITranslation
     {
         ITranslationCollection<TTranslation> Translations { get; }
+        bool HasTranslation(string languageTag);
     }
 }

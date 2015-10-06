@@ -13,5 +13,7 @@ namespace JobTracker.Models.CV
         public TranslationCollection<TTranslation> Translations { get { return translations; } set { Set(ref translations, value); } }
         private TranslationCollection<TTranslation> translations = new TranslationCollection<TTranslation>();
         ITranslationCollection<TTranslation> IWithTranslation<TTranslation>.Translations { get { return Translations; } }
+        public bool HasTranslation(string languageTag) { return Translations.Contains(languageTag); }
+
     }
 }
