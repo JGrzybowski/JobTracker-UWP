@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="JobTracker.UniversalApp.Views.GeneratingCvPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JobTracker.UniversalApp.Views"
+    
+    xmlns:controls="using:Template10.Controls"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Behaviors="using:Template10.Behaviors" 
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- header -->
+        <controls:PageHeader Text="Settings Page" Frame="{x:Bind Frame, Mode=OneWay}" />
+
+        <!-- content -->
+        <FlipView Grid.Row="1">
+            <StackPanel>
+                <TextBlock Text="Contents" Style="{StaticResource HeaderTextBlockStyle}" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Parameters" Style="{StaticResource HeaderTextBlockStyle}" />
+                <TextBlock Text="Language" />
+                <ComboBox>
+                    <ComboBoxItem>en-US</ComboBoxItem>
+                    <ComboBoxItem>pl-PL</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </FlipView>
+
+        <CommandBar Grid.Row="2" HorizontalContentAlignment="Right" >
+            <AppBarButton Label="Generate DocX" Icon="Save" />
+        </CommandBar>
+
+
+    </Grid>
+</Page>

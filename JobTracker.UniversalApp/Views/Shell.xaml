@@ -59,6 +59,12 @@
             </Controls:HamburgerMenu.PrimaryButtons>
 
             <Controls:HamburgerMenu.SecondaryButtons>
+                <Controls:HamburgerButtonInfo PageType="local:GeneratingCvPage" PageParameter="{x:Bind ViewModel.UserData}">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="ProtectedDocument" Width="48" Height="48" />
+                        <TextBlock x:Uid="GenerateCvNavButton" Text="Generate CV" VerticalAlignment="Center" Margin="12,0,0,0" />
+                    </StackPanel>
+                </Controls:HamburgerButtonInfo>
                 <Controls:HamburgerButtonInfo PageType="local:SettingsPage">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Setting" Width="48" Height="48" />
