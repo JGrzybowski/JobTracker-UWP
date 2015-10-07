@@ -77,10 +77,6 @@ namespace JobTracker.UniversalApp.ViewModels
                     var json = JsonConvert.SerializeObject(vm.UserData);
                     await FileIO.WriteTextAsync(file, json);
                 }
-                else if (file.FileType == ".docx")
-                {
-                    await new BasicCvTemplate().GenerateCV(file, vm.UserData, "en-US");
-                } 
             }
         }
 
