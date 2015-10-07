@@ -10,7 +10,8 @@ namespace JobTracker.UniversalApp.ViewModels
 {
     public interface ISectionPageViewModel
     {
-        void AddItem(string Name);
+        void AddItem();
+        void AddItem(string itemName);
         Visibility AddItemPanelVisibility { get; set; }
 
         void RemoveItem();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,7 +47,7 @@ namespace JobTracker.UniversalApp.Views.SectionPages
 
         private void ConfirmAddItemButtom_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.AddItem(this.NewItemsNameTextBox.Text);
+            ViewModel.AddItem();
         }
 
         private void CancelRemoveItemButtom_Click(object sender, RoutedEventArgs e)
@@ -66,6 +67,15 @@ namespace JobTracker.UniversalApp.Views.SectionPages
             }
         }
 
+        private void OnKeyDownHandler(object sender, KeyRoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (e.Key == VirtualKey.Enter)
+            {
+                ViewModel.AddItem(textBox.Text);
+                e.Handled = true;
+            }
+        }
 
     }
 }
