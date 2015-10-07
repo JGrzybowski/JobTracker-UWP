@@ -29,7 +29,7 @@ namespace JobTracker.UniversalApp.ViewModels
 
         private TSection _Section;
         public TSection Section { get { return _Section; } set { Set(ref _Section, value); } }
-
+        
         private TItem _SelectedItem;
         public TItem SelectedItem {
             get { return _SelectedItem; }
@@ -40,7 +40,12 @@ namespace JobTracker.UniversalApp.ViewModels
                 RaisePropertyChanged(nameof(AvaliableNewLanguages));
             }
         }
+        public bool IsAnyItemSelected
+        {
+            get { return SelectedItem != null; }
+        }
         
+        #region Items Buttons Panel
         private Visibility _AddItemPanelVisibility = Visibility.Collapsed;
         public Visibility AddItemPanelVisibility
         {
@@ -55,15 +60,24 @@ namespace JobTracker.UniversalApp.ViewModels
             set { Set(ref _RemoveItemPanelVisibility, value); }
         }
 
-        public void AddItem(string itemTitle)
+        private string newItemsName = "";
+        public string NewItemsName { get { return newItemsName; } set { Set(ref newItemsName, value); } }
+
+        public void AddItem()
         {
-            if (!string.IsNullOrWhiteSpace(itemTitle))
+            this.AddItem(newItemsName);
+        }
+        public void AddItem(string itemName)
+        {
+            if (!string.IsNullOrWhiteSpace(itemName))
             {
-                try {
-                    var newItem = new TItem() { Name = itemTitle };
+                try
+                {
+                    var newItem = new TItem() { Name = itemName };
+                    AddItemPanelVisibility = Visibility.Collapsed;
                     Section.Items.Add(newItem);
                     SelectedItem = newItem;
-                    AddItemPanelVisibility = Visibility.Collapsed;
+                    NewItemsName = "";
                 }
                 catch (ArgumentException e)
                 {
@@ -72,6 +86,7 @@ namespace JobTracker.UniversalApp.ViewModels
                 }
             }
         }
+
         public void RemoveItem()
         {
             if(IsAnyItemSelected)
@@ -82,12 +97,8 @@ namespace JobTracker.UniversalApp.ViewModels
                 this.RemoveItemPanelVisibility = Visibility.Collapsed;
             }
         }
-
-        public bool IsAnyItemSelected
-        {
-            get { return SelectedItem != null; }
-        }
-
+        #endregion
+        #region Translations Buttons Panel
         public void AddTranslation(string languageTag)
         {
             //OPTIMIZE
@@ -105,15 +116,6 @@ namespace JobTracker.UniversalApp.ViewModels
         {
             RaisePropertyChanged(nameof(AvaliableNewLanguages));
         }
-
-        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
-        {
-            base.OnNavigatedTo(parameter, mode, state);
-            var section = parameter as TSection;
-            if (section != null)
-                _Section = section;
-        }
-
         public ObservableCollection<string> AvaliableNewLanguages
         {
             get
@@ -123,6 +125,15 @@ namespace JobTracker.UniversalApp.ViewModels
                 return new ObservableCollection<string>(SupportedLanguages.List.Except(SelectedItem.Translations.Select(item => item.LanguageTag)));
             }
             //set { Set(ref _AvaliableNewLanguages, value); }
+        }
+        #endregion
+
+        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        {
+            base.OnNavigatedTo(parameter, mode, state);
+            var section = parameter as TSection;
+            if (section != null)
+                _Section = section;
         }
 
     }

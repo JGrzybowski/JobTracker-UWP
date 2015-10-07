@@ -109,7 +109,7 @@
                 <AppBarButton.Flyout>
                     <Flyout>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="NewItemsNameTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" />
+                            <TextBox x:Name="NewItemsNameTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" KeyDown="OnKeyDownHandler"/>
                             <Button x:Name="ConfirmAddItemButtom" Grid.Column="1"  Padding="4" Content="OK" Margin="4" Click="ConfirmAddItemButtom_Click"/>
                         </StackPanel>
                     </Flyout>
