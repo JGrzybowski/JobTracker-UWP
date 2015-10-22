@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using JobTracker.UniversalApp.Services.CvGeneratingServices;
 using Windows.Storage.Pickers;
+using Windows.UI.Xaml.Media;
+using Syncfusion.DocIO.DLS;
 
 namespace JobTracker.UniversalApp.ViewModels
 {
@@ -20,7 +22,11 @@ namespace JobTracker.UniversalApp.ViewModels
         private string selectedLanguage;
         public List<string> LanguagesList { get { return languagesList; } set { Set(ref languagesList, value); } }
         private List<string> languagesList = SupportedLanguages.List;
-        
+        public ImageSource CVlookup { get { return cvLookup; } set { Set(ref cvLookup, value); } }
+        private ImageSource cvLookup;
+        public WordDocument Doc { get { return doc; } set { Set(ref doc, value); } }
+        private WordDocument doc;
+
         public async Task GenerateDocx()
         {
             var fileSaver = new FileSavePicker();

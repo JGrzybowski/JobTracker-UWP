@@ -9,6 +9,7 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
     xmlns:Behaviors="using:Template10.Behaviors" 
     
+
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -29,17 +30,27 @@
         <controls:PageHeader Text="Settings Page" Frame="{x:Bind Frame, Mode=OneWay}" />
 
         <!-- content -->
-        <FlipView Grid.Row="1" SelectedIndex="1" Padding="12">
-            <StackPanel>
-                <TextBlock Text="Contents" Style="{StaticResource HeaderTextBlockStyle}" />
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="Parameters" Style="{StaticResource HeaderTextBlockStyle}" />
-                <TextBlock Text="Language" />
-                <ComboBox ItemsSource="{x:Bind ViewModel.LanguagesList, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedLanguage, Mode=TwoWay}"/>
-            </StackPanel>
-        </FlipView>
-
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="550" Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <FlipView SelectedIndex="0" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="Contents" Style="{StaticResource HeaderTextBlockStyle}" />
+                    <TextBlock Text="Language" />
+                    <ComboBox ItemsSource="{x:Bind ViewModel.LanguagesList, Mode=OneWay}" SelectedItem="{x:Bind ViewModel.SelectedLanguage, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Parameters" Style="{StaticResource HeaderTextBlockStyle}" />
+                    
+                </StackPanel>
+                
+            </FlipView>
+            <Image Grid.Column="1" Margin="32" Source="ms-appx:///Assets/Square150x150Logo.png" />
+            
+        </Grid>
         <CommandBar Grid.Row="2" HorizontalContentAlignment="Right" >
             <AppBarButton Label="Generate DocX" Icon="Save" Click="GenerateDocXButton_Click" />
         </CommandBar>
