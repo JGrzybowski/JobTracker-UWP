@@ -35,10 +35,6 @@ namespace JobTracker.UniversalApp.Views.SectionPages
         public EducationSectionPage() : base()
         {
             this.InitializeComponent();
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            {
-                ItemsList.SelectedIndex = 0;
-            }
         }
     }
 }

@@ -1,0 +1,123 @@
+﻿<UserControl
+    x:Class="JobTracker.UniversalApp.Controls.ItemDetailControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JobTracker.UniversalApp.Controls"
+    xmlns:Converters ="using:JobTracker.UniversalApp.Converters"
+    xmlns:CV="using:JobTracker.Models.CV"
+        
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Converters:NegateConverter x:Key="NegateConverter" />
+        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <Converters:DateTimeToDateTimeOffsetConverter x:Key="DateTimeOffsetConverter" />
+        <Converters:LanguageTagToNativeNameConverter x:Key="ToNativeLanguageName" />
+
+        <DataTemplate x:Key="JobTranslationEditorTemplate" x:DataType="CV:JobTranslation">
+            <Grid BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="0" Margin="0,4,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" x:Uid="CompanyNameLabel"  Text="Company Name" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind CompanyName, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" x:Uid="PositionLabel" Text="Position" VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Position, Mode=TwoWay}" />
+                <TextBlock Grid.Row="3" x:Uid="ResponsibilitiesLabel" Text="Responsibilities" VerticalAlignment="Center" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind Responsibilities, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ProjectTranslationEditorTemplate" x:DataType="CV:ProjectTranslation">
+            <Grid BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="0" Margin="0,4,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <!--<RowDefinition/>-->
+                </Grid.RowDefinitions>
+                <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" x:Uid="ProjectNameLabel"  Text="Project Name" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" x:Uid="ProjectDescriptionLabel" Text="Project Description" VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
+                <!--<TextBlock Grid.Row="3" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind , Mode=TwoWay}" />-->
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="EducationTranslationEditorTemplate" x:DataType="CV:EducationTranslation">
+            <Grid BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="0" Margin="0,4,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" x:Uid="SchoolNameLabel"  Text="School Name:" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind SchoolName, Mode=TwoWay}" />
+                <TextBlock Grid.Row="2" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Domain, Mode=TwoWay}" />
+                <TextBlock Grid.Row="3" x:Uid="DescriptionLabel" Text="Description" VerticalAlignment="Center" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DefaultTranslationEditor"></DataTemplate>
+
+        <local:ItemDetailsTemplateSelector x:Key="TranslationEditorTemplateSelector"
+                                           EducationTranslationTemplate="{StaticResource EducationTranslationEditorTemplate}"
+                                           JobTranslationTemplate="{StaticResource JobTranslationEditorTemplate}"
+                                           ProjectTranslationTemplate="{StaticResource ProjectTranslationEditorTemplate}"
+                                           DefaultTemplate="{StaticResource DefaultTranslationEditor}" />
+    </UserControl.Resources>
+
+    <StackPanel>
+        <CommandBar HorizontalContentAlignment="Right">
+            <AppBarButton Icon="Globe" x:Uid="AddTranslationButton">
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Bottom" local:BindableFlyout.ItemsSource="{Binding AvaliableNewLanguages, Mode=OneWay}" >
+                        <local:BindableFlyout.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <MenuFlyoutItem Text="{Binding Converter={StaticResource ToNativeLanguageName}, Mode=OneWay}" Click="AddNewTranslation_Click" HorizontalContentAlignment="Left" Tag="{Binding Mode=OneWay}"/>
+                            </DataTemplate>
+                        </local:BindableFlyout.ItemTemplate>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+
+        </CommandBar>
+        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{Binding SelectedItem.Name, Mode=OneWay}" Foreground="White" Padding="16,0"/>
+        <StackPanel HorizontalAlignment="Left" Padding="16,0">
+            <DatePicker Date="{Binding SelectedItem.TimePeriod.From, Converter={StaticResource DateTimeOffsetConverter}, Mode=TwoWay}" />
+            <CheckBox x:Name="TillNowCheckbox" Content="Till now" 
+                          IsChecked="{Binding SelectedItem.TimePeriod.TillNow, Mode=TwoWay}" HorizontalAlignment="Center" />
+            <DatePicker Date="{Binding SelectedItem.TimePeriod.To, Converter={StaticResource DateTimeOffsetConverter}, Mode=TwoWay}" 
+                            IsEnabled="{x:Bind TillNowCheckbox.IsChecked, Converter={StaticResource NegateConverter}, Mode=OneWay}" />
+        </StackPanel>
+        <ItemsControl 
+                x:Name="DetailContentPresenter"
+                BorderThickness="3,0,0,0"
+                BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                ItemsSource="{Binding SelectedItem.Translations, Mode=TwoWay}"
+                ItemTemplateSelector="{StaticResource TranslationEditorTemplateSelector}" Margin="12"/>
+    </StackPanel>
+</UserControl>

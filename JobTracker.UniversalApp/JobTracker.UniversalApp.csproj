@@ -106,6 +106,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BindableFlyout.cs" />
+    <Compile Include="Controls\ItemDetailControl.xaml.cs">
+      <DependentUpon>ItemDetailControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ItemDetailsTemplateSelector.cs" />
+    <Compile Include="Controls\MasterListControl.xaml.cs">
+      <DependentUpon>MasterListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\PeriodFormater.cs" />
     <Compile Include="Converters\DateTimeToDateTimeOffsetConverter.cs" />
@@ -206,6 +213,14 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ItemDetailControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MasterListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\MetroIcons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
