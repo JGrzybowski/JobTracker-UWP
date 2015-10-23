@@ -20,62 +20,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace JobTracker.UniversalApp.Views.SectionPages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class ProjectSectionPage : Page
+    public class ProjectSectionPageBase : SectionPageBase<ProjectSection, ProjectItem, ProjectTranslation>
     {
-        public ProjectSectionPage()
+        public ProjectSectionPageBase() : base() { }
+    }
+   
+    public sealed partial class ProjectSectionPage : ProjectSectionPageBase
+    {
+        public ProjectSectionPage() : base()
         {
-            this.DataContext = new SectionPageViewModel<ProjectSection, ProjectItem, ProjectTranslation>();
             this.InitializeComponent();
-            NavigationCacheMode = NavigationCacheMode.Disabled;
         }
-
-        // strongly-typed view models enable x:bind
-        public SectionPageViewModel<ProjectSection, ProjectItem, ProjectTranslation> ViewModel => DataContext as SectionPageViewModel<ProjectSection, ProjectItem, ProjectTranslation>;
-
-        private void AddItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.AddItemPanelVisibility = Visibility.Visible;
-        }
-
-        private void RemoveItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.RemoveItemPanelVisibility = Visibility.Visible;
-        }
-
-        private void ConfirmAddItemButtom_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.AddItem();
-        }
-
-        private void CancelRemoveItemButtom_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.RemoveItemPanelVisibility = Visibility.Collapsed;
-        }
-        private void ConfirmRemoveItemButtom_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.RemoveItem();
-        }
-        private void AddNewTranslation_Click(object sender, RoutedEventArgs e)
-        {
-            MenuFlyoutItem langButton = sender as MenuFlyoutItem;
-            if (langButton != null)
-            {
-                ViewModel.AddTranslation(langButton.Tag.ToString());
-            }
-        }
-
-        private void OnKeyDownHandler(object sender, KeyRoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (e.Key == VirtualKey.Enter)
-            {
-                ViewModel.AddItem(textBox.Text);
-                e.Handled = true;
-            }
-        }
-
     }
 }

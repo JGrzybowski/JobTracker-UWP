@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 namespace JobTracker.UniversalApp.ViewModels
 {
     public class SectionPageViewModel<TSection, TItem, TTranslation> : JobTracker.UniversalApp.Mvvm.ViewModelBase, ISectionPageViewModel
-        where TSection : class, ISection<TItem>, ISection
+        where TSection : class, ISection<TItem>, ISection, new()
         where TItem : class, ISectionItem<TTranslation>, new()
         where TTranslation : class, ITranslation, new()
     {
@@ -22,8 +22,14 @@ namespace JobTracker.UniversalApp.ViewModels
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                //this.Section = ExampleData.ExampleUser.Education as TSection;
-                SelectedItem = Section.Items[0];
+                //FIX use factory to generate example data
+                Section = new TSection();
+                Section.Items.Add(new TItem());
+                Section.Items.Add(new TItem());
+                Section.Items[0].Name = "Item Name";
+                Section.Items[1].Name = "Item Name";
+                SelectedItem = Section.Items.FirstOrDefault();
+                SelectedItem.Translations.Add(new TTranslation());
             }
         }
 
