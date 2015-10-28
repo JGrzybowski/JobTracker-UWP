@@ -3,7 +3,7 @@
     <Color x:Key="CustomColor">OrangeRed</Color>
 
     <x:Double x:Key="NarrowMinWidth">0</x:Double>
-    <x:Double x:Key="NormalMinWidth">521</x:Double>
+    <x:Double x:Key="NormalMinWidth">720</x:Double>
     <x:Double x:Key="WideMinWidth">1200</x:Double>
 
     <SolidColorBrush x:Key="CustomColorBrush" Color="{StaticResource CustomColor}" />
