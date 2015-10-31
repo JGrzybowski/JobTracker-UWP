@@ -1,6 +1,7 @@
 ﻿using JobTracker.Models;
 using JobTracker.Models.CV;
 using JobTracker.UniversalApp.Models;
+using JobTracker.UniversalApp.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace JobTracker.UniversalApp.ViewModels
 {
-    public class SectionPageViewModel<TSection, TItem, TTranslation> : JobTracker.UniversalApp.Mvvm.ViewModelBase, ISectionPageViewModel
+    public class SectionPageViewModel<TSection, TItem, TTranslation> : ViewModelBase, ISectionPageViewModel
         where TSection : class, ISection<TItem>, ISection, new()
         where TItem : class, ISectionItem<TTranslation>, new()
         where TTranslation : class, ITranslation, new()
@@ -27,7 +28,7 @@ namespace JobTracker.UniversalApp.ViewModels
                 Section.Items.Add(new TItem());
                 Section.Items.Add(new TItem());
                 Section.Items[0].Name = "Item Name";
-                Section.Items[1].Name = "Item Name";
+                Section.Items[1].Name = "Item Name2";
                 SelectedItem = Section.Items.FirstOrDefault();
                 SelectedItem.Translations.Add(new TTranslation());
             }
@@ -58,16 +59,18 @@ namespace JobTracker.UniversalApp.ViewModels
             get { return _AddItemPanelVisibility; }
             set { Set(ref _AddItemPanelVisibility, value); }
         }
-
+        
         private Visibility _RemoveItemPanelVisibility = Visibility.Collapsed;
         public Visibility RemoveItemPanelVisibility
         {
             get { return _RemoveItemPanelVisibility; }
             set { Set(ref _RemoveItemPanelVisibility, value); }
         }
-
+        
         private string newItemsName = "";
         public string NewItemsName { get { return newItemsName; } set { Set(ref newItemsName, value); } }
+        private Visibility addItemErrorMessageVisibility = Visibility.Collapsed;
+        public Visibility AddItemErrorMessageVisibility { get { return addItemErrorMessageVisibility; } set { Set(ref addItemErrorMessageVisibility, value); } }
 
         public void AddItem()
         {
@@ -87,8 +90,7 @@ namespace JobTracker.UniversalApp.ViewModels
                 }
                 catch (ArgumentException e)
                 {
-                    //TODO
-                    //Signal user that Name is already taken
+                    this.AddItemErrorMessageVisibility = Visibility.Visible;
                 }
             }
         }
