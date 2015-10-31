@@ -57,9 +57,14 @@
             <AppBarButton Icon="Add" Click="AddItemButton_Click" x:Uid="AddItemButton">
                 <AppBarButton.Flyout>
                     <Flyout>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBox x:Name="NewItemsNameTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" KeyDown="OnKeyDownHandler"/>
-                            <Button x:Name="ConfirmAddItemButtom" Grid.Column="1"  Padding="4" Content="OK" Margin="4" Click="ConfirmAddItemButtom_Click"/>
+                        <StackPanel Width="300">
+                            <TextBlock Text="An Item with such name already exists, choose another one."  
+                                       TextWrapping="Wrap" Margin="4" Foreground="DarkRed"
+                                       Visibility="{Binding AddItemErrorMessageVisibility}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="NewItemsNameTextBox" PlaceholderText="New Item's Name"  Margin="4" HorizontalContentAlignment="Stretch" KeyDown="OnKeyDownHandler" Width="250"/>
+                                <Button x:Name="ConfirmAddItemButtom" Grid.Column="1"  Padding="4" Content="OK" Margin="4" Click="ConfirmAddItemButtom_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>

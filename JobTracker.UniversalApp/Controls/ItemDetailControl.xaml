@@ -53,9 +53,9 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="{x:Bind LanguageTag}" HorizontalAlignment="Center" />
                 <TextBlock Grid.Row="1" x:Uid="ProjectNameLabel"  Text="Project Name" VerticalAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}" TextWrapping="Wrap"/>
                 <TextBlock Grid.Row="2" x:Uid="ProjectDescriptionLabel" Text="Project Description" VerticalAlignment="Center" />
-                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{x:Bind Description, Mode=TwoWay}" TextWrapping="Wrap"/>
                 <!--<TextBlock Grid.Row="3" x:Uid="DomainLabel" Text="Domain" VerticalAlignment="Center" />
                 <TextBox Grid.Row="3" Grid.Column="1" Text="{x:Bind , Mode=TwoWay}" />-->
             </Grid>

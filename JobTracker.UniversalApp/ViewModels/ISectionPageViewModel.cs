@@ -13,6 +13,7 @@ namespace JobTracker.UniversalApp.ViewModels
         void AddItem();
         void AddItem(string itemName);
         Visibility AddItemPanelVisibility { get; set; }
+        Visibility AddItemErrorMessageVisibility { get; set; }
 
         void RemoveItem();
         Visibility RemoveItemPanelVisibility { get; set; }

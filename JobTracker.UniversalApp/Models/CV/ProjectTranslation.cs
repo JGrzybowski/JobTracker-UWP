@@ -14,11 +14,11 @@ namespace JobTracker.Models.CV
 
         [XmlAttribute("Name")]
         public string Name { get { return name; } set { Set(ref name, value); } }
-        private string name;
+        private string name = "";
 
         [XmlAttribute("Description")]
         public string Description { get { return description; } set { Set(ref description, value); } }
-        private string description;
+        private string description = "";
 
     }
 }

@@ -21,22 +21,25 @@
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="320"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition x:Name="MasterColumn" Width="320"/>
+            <ColumnDefinition x:Name="DetailColumn" Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- header -->
-        <controls:PageHeader Text="Project Page" Frame="{x:Bind Frame}" />
+        <controls:PageHeader x:Name="PageHeader" Text="Project Page" 
+                             Grid.ColumnSpan="2"
+                             Frame="{x:Bind Frame}" />
 
         <!--#region content-->
         <LocalControls:MasterListControl Grid.Row="1"/>
-        <LocalControls:ItemDetailControl Grid.RowSpan="2" Grid.Column="1"  Visibility="{x:Bind ViewModel.IsAnyItemSelected, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" />
+        <LocalControls:ItemDetailControl Grid.Row="1" Grid.Column="1" Visibility="{x:Bind ViewModel.IsAnyItemSelected, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" />
         <!--#endregion-->
     </Grid>
     
