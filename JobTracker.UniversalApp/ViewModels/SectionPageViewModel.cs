@@ -136,12 +136,12 @@ namespace JobTracker.UniversalApp.ViewModels
         }
         #endregion
 
-        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            base.OnNavigatedTo(parameter, mode, state);
             var section = parameter as TSection;
             if (section != null)
                 _Section = section;
+            return Task.CompletedTask;
         }
 
     }

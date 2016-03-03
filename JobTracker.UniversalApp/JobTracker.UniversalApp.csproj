@@ -272,11 +272,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
-    <SDKReference Include="SyncfusionUniversalWindows, Version=13.3.0.7">
-      <Name>Syncfusion Controls for UWP XAML %28SyncfusionUniversalWindows, Version=13.3.0.7%29</Name>
+    <SDKReference Include="Syncfusion Controls for UWP XAML, Version=13.4.0.53">
+      <Name>Syncfusion Controls for UWP XAML</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ namespace JobTracker.UniversalApp.ViewModels
             }
         }
 
-        public override void OnNavigatedTo(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             if (state.Any())
             {
@@ -28,6 +28,7 @@ namespace JobTracker.UniversalApp.ViewModels
                 // clear any cache
                 state.Clear();
             }
+            return Task.CompletedTask;
         }
 
         public override Task OnNavigatedFromAsync(IDictionary<string, object> state, bool suspending)
@@ -37,12 +38,12 @@ namespace JobTracker.UniversalApp.ViewModels
                 // persist into cache
                 state[nameof(Value)] = Value;
             }
-            return base.OnNavigatedFromAsync(state, suspending);
+            return Task.CompletedTask;
         }
 
-        public override void OnNavigatingFrom(NavigatingEventArgs args)
+        public override Task OnNavigatingFromAsync(NavigatingEventArgs args)
         {
-            base.OnNavigatingFrom(args);
+            return base.OnNavigatingFromAsync(args);
         }
 
         private string _Value = string.Empty;
