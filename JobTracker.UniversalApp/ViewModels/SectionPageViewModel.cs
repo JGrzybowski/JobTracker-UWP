@@ -140,7 +140,7 @@ namespace JobTracker.UniversalApp.ViewModels
         {
             var section = parameter as TSection;
             if (section != null)
-                _Section = section;
+                Section = section;
             return Task.CompletedTask;
         }
 

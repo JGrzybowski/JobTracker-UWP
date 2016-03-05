@@ -40,6 +40,7 @@ namespace JobTracker.Models
             Education = new EducationSection();
             Jobs = new JobSection();
             Projects = new ProjectSection();
+            DateOfBirth = DateTime.Today;
         }
 
 

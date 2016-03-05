@@ -24,11 +24,11 @@ namespace JobTracker.Models
     {
         [XmlAttribute("From")]
         public DateTime From { get { return _From; } set { Set(ref _From, value); } }
-        private DateTime _From = DateTime.Now;
+        private DateTime _From = DateTime.Today;
 
         [XmlAttribute("To")]
         public DateTime To { get { return _To; } set { Set(ref _To, value); } }
-        private DateTime _To = DateTime.Now;
+        private DateTime _To = DateTime.Today;
 
         [XmlAttribute("TillNow")]
         public bool TillNow { get { return _TillNow; } set { Set(ref _TillNow, value); } }
