@@ -41,22 +41,21 @@
         </controls:PageHeader>
 
         <!-- content -->
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,0" Grid.Row="1">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="12,20" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -64,11 +63,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <SymbolIcon Symbol="Phone"  Grid.Row="2"/>
+            <SymbolIcon Symbol="Phone"  Grid.Row="2" Margin="0,0,12,0"/>
             <TextBox Grid.Row="2" Grid.Column="2" PlaceholderText="First Name" Text="{x:Bind ViewModel.User.FirstName, Mode=TwoWay}" />
-            <TextBox Grid.Row="3" Grid.Column="2" PlaceholderText="Last Name" Text="{x:Bind ViewModel.User.LastName, Mode=TwoWay}" Grid.RowSpan="2"/>
+            <TextBox Grid.Row="3" Grid.Column="2" PlaceholderText="Last Name" Text="{x:Bind ViewModel.User.LastName, Mode=TwoWay}" />
 
-            <SymbolIcon Symbol="CalendarDay" Grid.Row="3"/>
+            <SymbolIcon Symbol="CalendarDay" Grid.Row="4"/>
             <DatePicker Grid.Row="4" Grid.Column="2" Date="{x:Bind ViewModel.User.DateOfBirth, Converter={StaticResource DateConverter}, Mode=TwoWay}"/>
 
             <SymbolIcon Symbol="Home"  Grid.Row="5"/>
