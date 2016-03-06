@@ -14,12 +14,12 @@
 
     <UserControl.Resources>
         <DataTemplate x:Key="ItemTemplate" x:DataType="CV:ISectionItem">
-            <StackPanel Orientation="Vertical" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="2">
+            <StackPanel Orientation="Vertical" BorderThickness="2">
                 <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="20" />
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
