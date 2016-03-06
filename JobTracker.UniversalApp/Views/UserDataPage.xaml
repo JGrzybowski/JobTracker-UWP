@@ -24,6 +24,9 @@
 
     <Page.Resources>
         <Converters:DateTimeToDateTimeOffsetConverter x:Key="DateConverter"/>
+        <Style TargetType="SymbolIcon">
+            <Setter Property="Margin" Value="0,0,12,0" />
+        </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -63,12 +66,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <SymbolIcon Symbol="Phone"  Grid.Row="2" Margin="0,0,12,0"/>
+            <SymbolIcon Symbol="ContactInfo"  Grid.Row="2"/>
             <TextBox Grid.Row="2" Grid.Column="2" PlaceholderText="First Name" Text="{x:Bind ViewModel.User.FirstName, Mode=TwoWay}" />
             <TextBox Grid.Row="3" Grid.Column="2" PlaceholderText="Last Name" Text="{x:Bind ViewModel.User.LastName, Mode=TwoWay}" />
 
             <SymbolIcon Symbol="CalendarDay" Grid.Row="4"/>
-            <DatePicker Grid.Row="4" Grid.Column="2" Date="{x:Bind ViewModel.User.DateOfBirth, Converter={StaticResource DateConverter}, Mode=TwoWay}"/>
+            <DatePicker Grid.Row="4" Grid.Column="2" Date="{x:Bind ViewModel.User.DateOfBirth, Converter={StaticResource DateConverter}, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
 
             <SymbolIcon Symbol="Home"  Grid.Row="5"/>
             <TextBox Grid.Row="5" Grid.Column="2" PlaceholderText="Line 1" Text="{x:Bind ViewModel.User.Address.Line1, Mode=TwoWay}"/>
