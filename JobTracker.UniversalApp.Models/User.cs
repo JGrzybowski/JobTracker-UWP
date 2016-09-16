@@ -44,8 +44,8 @@ namespace JobTracker.Models
         }
 
 
-        //[XmlIgnore]
-        //public List<Section<>> Sections { get { return new List<Section<>>{ Education,Jobs, Projects }; } }
+        [XmlIgnore]
+        public List<ISection> Sections { get { return new List<ISection>{ Education,Jobs, Projects }; } }
 
         // override object.Equals
         public override bool Equals(object obj)
