@@ -34,11 +34,17 @@ namespace JobTracker.Models.FieldTypes
                     throw new ArgumentException("Max must be greater than Min.");
             }
         }
-        private int step = 0;
+        private int step = 1;
         public int Step
         {
             get { return step; }
-            set { SetProperty(ref step, value); }
+            set
+            {
+                if (value > 0)
+                    SetProperty(ref step, value);
+                else
+                    throw new ArgumentException("Step size must be greater than zero.");
+            }
         }
     }
 }

@@ -23,5 +23,33 @@ namespace JobTracker.Models.Tests
             Should.Throw<ArgumentException>(
                 () => period.From = new DateTime(2000, 11, 01));
         }
+
+        [Fact]
+        public void EqualityIgnoresDatesPartsVisibility()
+        {
+            var periodA = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { DatesPartsVisibility = TimeUnit.DayMonth};
+            var periodB = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { DatesPartsVisibility = TimeUnit.DayMonthYear};
+
+            periodA.ShouldBe(periodB);
+        }
+
+        [Fact]
+        public void EqualityIgnoresDatesVisibility()
+        {
+            var periodA = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { DatesVisibility = DatesVisibility.Single};
+            var periodB = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { DatesVisibility = DatesVisibility.Both};
+
+            periodA.ShouldBe(periodB);
+        }
+
+        [Fact]
+        public void EqualityRespectsTillNow()
+        {
+            var periodA = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { TillNow = true };
+            var periodB = new Period(new DateTime(2000, 01, 01), new DateTime(2010, 01, 01)) { TillNow = false };
+
+            periodA.ShouldNotBe(periodB);
+        }
+
     }
 }

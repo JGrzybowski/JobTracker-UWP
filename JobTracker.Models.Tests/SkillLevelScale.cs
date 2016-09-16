@@ -28,5 +28,24 @@ namespace JobTracker.Models.Tests
             Should.Throw<ArgumentException>(
                 () => scale.Min = 10);
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-5)]
+        public void StepSizeCantBeLessOrEqualZero(int stepSize)
+        {
+            var scale = new SkillLevelScale();
+
+            Should.Throw<ArgumentException>(() => scale.Step = stepSize);
+        }
+
+        [Theory]
+        [InlineData(5)]
+        public void StepSizeMustBeGreaterThanZero(int stepSize)
+        {
+            var scale = new SkillLevelScale();
+            Should.NotThrow(() => scale.Step = stepSize);
+            scale.Step.ShouldBe(stepSize);
+        }
     }
 }

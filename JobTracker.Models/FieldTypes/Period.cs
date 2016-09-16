@@ -71,8 +71,8 @@ namespace JobTracker.Models.FieldTypes
         }
         public Period(DateTime from, DateTime to)
         {
-            this._To = to;
-            this._From = from;
+            this.To = to;
+            this.From = from;
         }
 
 
