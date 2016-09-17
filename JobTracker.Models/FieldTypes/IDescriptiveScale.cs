@@ -8,9 +8,9 @@ namespace JobTracker.Models.FieldTypes
 {
     public interface IDescriptiveScale
     {
-        int ScaleSize { get; set; }
+        int Size { get; }
         void AddDictionary(string languageCode);
-        void AddDictionary(string languageCode, IEnumerable<string> levelsNames);
+        void AddDictionary(string languageCode, IList<string> levelsNames);
         void RemoveDictionary(string languageCode);
         void AddLevel(int newLevelIndex);
         void RemoveLevel(int level);

@@ -9,63 +9,88 @@ namespace JobTracker.Models.FieldTypes
 {
     public class SkillLevelDescriptiveScale : BindableBase, IDescriptiveScale
     {
-        private int scaleSize;
-        public int ScaleSize
+        public int Size
         {
-            get { return scaleSize; }
-            set
-            {   if (value > 0)
-                    SetProperty(ref scaleSize, value);
-                else
-                    throw new ArgumentException("Scale size must be a positive integer.");
-            }
+            get { return _levels.Count; }
         }
 
-        private Dictionary<string, string>[] _levels;
+        private List<Dictionary<string, string>> _levels;
 
         public SkillLevelDescriptiveScale(int scaleSize)
         {
-            ScaleSize = scaleSize;
-            _levels = new Dictionary<string, string>[ScaleSize];
+            if (scaleSize <= 0)
+                throw new ArgumentException("Scale size must be greater than zero (>0).");
+
+            _levels = new List<Dictionary<string, string>>();
+            for (int i = 0; i < scaleSize; i++)
+                _levels.Add(new Dictionary<string, string>());
         }
 
         public string this[int level, string languageCode]
         {
             get
             {
-                throw new NotImplementedException();
+                if (level >= 0 && level < Size && _levels[level].ContainsKey(languageCode))
+                    return _levels[level][languageCode];
+                else
+                    throw new ArgumentOutOfRangeException("The scale does not contain such language");
             }
 
             set
             {
-                throw new NotImplementedException();
+                if (level >= 0 && level < Size && _levels[level].ContainsKey(languageCode))
+                    _levels[level][languageCode] = value;
+                else
+                    throw new ArgumentOutOfRangeException("The scale does not contain such language");
             }
         }
 
 
         public void AddDictionary(string languageCode)
         {
-            throw new NotImplementedException();
+            foreach(var level in _levels)
+                level.Add(languageCode, string.Empty);
         }
 
-        public void AddDictionary(string languageCode, IEnumerable<string> levelsNames)
+        public void AddDictionary(string languageCode, IList<string> levelsNames)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _levels.Count; i++)
+                _levels[i].Add(languageCode, levelsNames[i]);
         }
 
         public void RemoveDictionary(string languageCode)
         {
-            throw new NotImplementedException();
+            CheckLanguageCode(languageCode);
+            foreach (var level in _levels)
+                level.Remove(languageCode);
         }
+
         public void AddLevel(int newLevelIndex)
         {
-            throw new NotImplementedException();
+            var levelDictionary = new Dictionary<string, string>();
+            foreach (var language in languages)
+                levelDictionary.Add(language, string.Empty);
+
+            _levels.Insert(newLevelIndex, levelDictionary);
+
         }
 
         public void RemoveLevel(int level)
         {
-            throw new NotImplementedException();
+            _levels.RemoveAt(level);
         }
 
+        private void CheckLanguageCode(string languageCode)
+        {
+            if (!languages.Contains(languageCode))
+                throw new ArgumentOutOfRangeException("The scale does not contain such language");
+        }
+
+        private IEnumerable<string> languages {
+            get
+            {
+                return _levels.SelectMany(level => level.Keys).Distinct();
+            }
+        }
     }
 }

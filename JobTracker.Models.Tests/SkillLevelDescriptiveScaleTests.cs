@@ -22,30 +22,36 @@ namespace JobTracker.Models.Tests
                 Should.Throw<ArgumentException>(
                     () => new SkillLevelDescriptiveScale(scaleSize));
             }
+
+            //[Fact]
+            //public void CreatesEmptyReadableScale()
+            //{
+            //    var scale = new SkillLevelDescriptiveScale(3);                
+            //}
         }
 
         public class ScaleSizeProperty
         {
-            [Theory]
-            [InlineData(0)]
-            [InlineData(-5)]
-            public void CantBeSetLessOrEqualZero(int scaleSize)
-            {
-                var scale = new SkillLevelDescriptiveScale(10);
+            //[Theory]
+            //[InlineData(0)]
+            //[InlineData(-5)]
+            //public void CantBeSetLessOrEqualZero(int scaleSize)
+            //{
+            //    var scale = new SkillLevelDescriptiveScale(10);
 
-                Should.Throw<ArgumentException>(
-                    () => scale.ScaleSize = scaleSize);
-            }
+            //    Should.Throw<ArgumentException>(
+            //        () => scale.Size = scaleSize);
+            //}
 
-            [Theory]
-            [InlineData(15)]
-            public void CanBeGreaterThanZero(int scaleSize)
-            {
-                var scale = new SkillLevelDescriptiveScale(5);
+            //[Theory]
+            //[InlineData(15)]
+            //public void CanBeGreaterThanZero(int scaleSize)
+            //{
+            //    var scale = new SkillLevelDescriptiveScale(5);
 
-                Should.NotThrow(() => scale.ScaleSize = scaleSize);
-                scale.ScaleSize.ShouldBe(scaleSize);
-            }
+            //    Should.NotThrow(() => scale.Size = scaleSize);
+            //    scale.Size.ShouldBe(scaleSize);
+            //}
 
 
         }
@@ -161,7 +167,7 @@ namespace JobTracker.Models.Tests
             {
                 var scale = EnglishScale();
                 scale.AddLevel(2);
-                scale.ScaleSize.ShouldBe(constructedScaleSize+1);
+                scale.Size.ShouldBe(constructedScaleSize+1);
             }
 
             [Fact]
@@ -201,9 +207,9 @@ namespace JobTracker.Models.Tests
             {
                 var scale = EnglishScale();
 
-                scale.ScaleSize.ShouldBe(constructedScaleSize);
+                scale.Size.ShouldBe(constructedScaleSize);
                 scale.RemoveLevel(constructedScaleSize-1);
-                scale.ScaleSize.ShouldBe(constructedScaleSize-1);           
+                scale.Size.ShouldBe(constructedScaleSize-1);           
             }
 
             [Fact]
@@ -233,7 +239,8 @@ namespace JobTracker.Models.Tests
                 var scale = EnglishScale();
 
                 string read;
-                Should.Throw<ArgumentOutOfRangeException>(() => read = scale[1,"es"]);
+                Should.Throw<ArgumentException>(() => read = scale[1,"es"]);
+                Should.Throw<ArgumentException>(() => scale[1, "es"] = "");
             }
 
             [Fact]
@@ -242,7 +249,8 @@ namespace JobTracker.Models.Tests
                 var scale = EnglishScale();
 
                 string read;
-                Should.Throw<ArgumentOutOfRangeException>(() => read = scale[constructedScaleSize+5, "en"]);
+                Should.Throw<ArgumentException>(() => read = scale[constructedScaleSize+5, "en"]);
+                Should.Throw<ArgumentException>(() => scale[constructedScaleSize + 5, "en"] = "");
             }
 
             [Fact]
@@ -254,6 +262,15 @@ namespace JobTracker.Models.Tests
                 scale[1, "en"].ShouldBe("Advanced");
                 scale[2, "en"].ShouldBe("Expert");
             }
+
+            [Fact]
+            public void SetsValuesIntoDictionary()
+            {
+                var scale = EnglishScale();
+
+                scale[1, "en"] = "Intermediate";
+                scale[1, "en"].ShouldBe("Intermediate");
+            }
         }
 
         private static int constructedScaleSize = 3;
@@ -264,5 +281,6 @@ namespace JobTracker.Models.Tests
             scale.AddDictionary("en", new List<string> { "Begginer", "Advanced", "Expert" });
             return scale;
         }
+
     }
 }
